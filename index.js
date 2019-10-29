@@ -28,11 +28,13 @@ const analyzeFile = file => {
          let tokens = data.split(/\@(\w+)/)
          if (['todo', 'note'].includes(tokens[1])) {
             startLineNum = lineNum
+
             // Just because i want to pluralize the object arrays.
             kind = tokens[1] + 's'
-            let remains = tokens.slice(2).join('').trimLeft()
             isActive = true
 
+            // If there are any other text after the @todo/@note, include it.
+            let remains = tokens.slice(2).join('').trimLeft()
             if (remains) {
                fullMsg += remains
             }
@@ -40,6 +42,7 @@ const analyzeFile = file => {
          } else if (isActive) {
             let text = data.split(/^\/\//)[1]
             if (fullMsg == '') {
+               // For formatting purposes.
                text = text.trim()
             }
             fullMsg += `${text}`
