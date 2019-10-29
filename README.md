@@ -21,7 +21,7 @@ function add(x, y) {
 -- END OF FILE
 
 would look like
-
+<pre>
 {
   todo: [
     {
@@ -46,3 +46,4 @@ would look like
     }
   ]
 }
+</pre>
