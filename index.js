@@ -4,8 +4,8 @@ const cp = require('child_process')
 const readline = require('readline')
 
 const obj = {
-   todo: [],
-   note: []
+   todos: [],
+   notes: []
 }
 
 const analyzeFile = file => {
@@ -23,19 +23,26 @@ const analyzeFile = file => {
 
    readInterface.on('line', data => {
       lineNum++
-      if (data.trim().startsWith('//')) {
-         let match = data.match(/\@(\w+)/)
-         if (match) {
+      data = data.trim()
+      if (data.startsWith('//')) {
+         let tokens = data.split(/\@(\w+)/)
+         if (['todo', 'note'].includes(tokens[1])) {
             startLineNum = lineNum
-            kind = match[1]
-            if (kind == 'todo' || kind == 'note') {
-               isActive = true
+            // Just because i want to pluralize the object arrays.
+            kind = tokens[1] + 's'
+            let remains = tokens.slice(2).join('').trimLeft()
+            isActive = true
+
+            if (remains) {
+               fullMsg += remains
             }
+
          } else if (isActive) {
-            // Trim is called twice here so the white-space before // is removed,
-            // and after splitting so the whitespace between // and the comment is removed.
-            let text = data.trim().split('//')[1].trim()
-            fullMsg += `${text} `
+            let text = data.split(/^\/\//)[1]
+            if (fullMsg == '') {
+               text = text.trim()
+            }
+            fullMsg += `${text}`
          }
       } else {
          if (kind && isActive) {
@@ -62,8 +69,6 @@ const analyzeFile = file => {
 }
 
 const goThroughProject = startingPoint => {
-   // recursively goes through dirs in current project
-   // except node_modules and calls analyzeFile on its files.
    fs.readdir(startingPoint, (err, files) => {
       files.forEach(file => {
          let fullPath = path.join(startingPoint, file)
@@ -71,7 +76,6 @@ const goThroughProject = startingPoint => {
             if (file === 'node_modules' || file == '.git') return
             return goThroughProject(fullPath)
          } else {
-            // Only for js file.
             if (file.split('.')[1] === 'js') {
                return analyzeFile(fullPath)
             }
@@ -81,9 +85,8 @@ const goThroughProject = startingPoint => {
 }
 
 cp.exec('cd', (err, res) => {
-   // cd returns the current directory you are in
-   // don't know what it returns for *nix or Mac, might not work.
-   // only tested on windows
+   // cd on Windows returns current directory
+   // I don't know if this works on Linux or Mac
    goThroughProject(res.trim())
 })
 
