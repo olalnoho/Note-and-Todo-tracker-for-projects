@@ -29,7 +29,7 @@ would look like
       msg: 'maybe add support for callback?',
       startLineNum: 8,
       endLineNum: 10,
-      file: 'path of the file would go here'
+      file: 'path to the file would go here'
     }
   ],
   note: [
@@ -37,13 +37,13 @@ would look like
       msg: 'this is a note about the test function',
       startLineNum: 2,
       endLineNum: 4,
-      file: 'path of the file would go here'
+      file: 'path to the file would go here'
     }, 
     {
       msg: 'End of file',
       startLineNum: 13,
       endLineNum: 15,
-      file: 'path of the file would go here'
+      file: 'path to the file would go here'
     }
   ]
 }
