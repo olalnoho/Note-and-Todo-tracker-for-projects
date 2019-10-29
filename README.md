@@ -42,7 +42,7 @@ would look like
     {
       msg: 'End of file',
       startLineNum: 13,
-      endLineNum: 14,
+      endLineNum: 15,
       file: 'pathToFile'
     }
   ]
