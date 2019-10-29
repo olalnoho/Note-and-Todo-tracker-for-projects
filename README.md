@@ -3,6 +3,7 @@ Goes trough all dirs and files in current project, collects comments that start 
 
 e.g.
 -- START OF FILE --
+<pre>
 function test(){
   // @note
   // this is a note about the test function
@@ -17,7 +18,7 @@ function add(x, y) {
 
 // @note
 // End of file
-
+</pre>
 -- END OF FILE
 
 would look like
