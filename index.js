@@ -1,7 +1,3 @@
-// Reads the current dir through the cd command,
-// I don't know if cd on *nix or mac returns the current dir,
-// so might not work there. Only tested on Windows.
-
 const fs = require('fs')
 const path = require('path')
 const cp = require('child_process')
@@ -86,6 +82,8 @@ const goThroughProject = startingPoint => {
 
 cp.exec('cd', (err, res) => {
    // cd returns the current directory you are in
+   // don't know what it returns for *nix or Mac, might not work.
+   // only tested on windows
    goThroughProject(res.trim())
 })
 
