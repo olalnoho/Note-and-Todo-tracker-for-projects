@@ -26,7 +26,7 @@ function add(x, y) {
 would look like
 <pre>
 {
-  todo: [
+  todos: [
     {
       msg: 'maybe add support for callback?',
       startLineNum: 8,
@@ -34,7 +34,7 @@ would look like
       file: 'path to the file would go here'
     }
   ],
-  note: [
+  notes: [
     {
       msg: 'this is a note about the test function it can be multiple lines as well woho!',
       startLineNum: 2,
