@@ -27,22 +27,22 @@ would look like
   todo: [
     {
       msg: 'maybe add support for callback?',
-      startLineNum: 13,
-      endLineNum: 15,
+      startLineNum: 8,
+      endLineNum: 10,
       file: 'pathToFile'
     }
   ],
   note: [
     {
       msg: 'this is a note about the test function',
-      startLineNum: 7,
-      endLineNum: 9,
+      startLineNum: 2,
+      endLineNum: 4,
       file: 'pathToFile'
     }, 
     {
       msg: 'End of file',
-      startLineNum: 18,
-      endLineNum: 20,
+      startLineNum: 13,
+      endLineNum: 14,
       file: 'pathToFile'
     }
   ]
