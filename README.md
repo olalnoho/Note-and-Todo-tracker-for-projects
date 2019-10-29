@@ -20,7 +20,7 @@ function add(x, y) {
 
 -- END OF FILE
 
-would look like 
+would look like
 
 {
   todo: [
