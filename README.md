@@ -21,7 +21,7 @@ function add(x, y) {
 // @note
 // End of file
 </pre>
--- END OF FILE
+-- END OF FILE --
 
 would look like
 <pre>
