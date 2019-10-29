@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const fs = require('fs')
 const path = require('path')
 const cp = require('child_process')
@@ -33,7 +34,7 @@ const analyzeFile = file => {
             kind = tokens[1] + 's'
             isActive = true
 
-            // If there are any other text after the @todo/@note, include it.
+            // If there are any other text after the todo/note, include it.
             let remains = tokens.slice(2).join('').trimLeft()
             if (remains) {
                fullMsg += remains
@@ -94,11 +95,8 @@ cp.exec('cd', (err, res) => {
 })
 
 process.on('beforeExit', () => {
-   // Here you can decide what to do with the data.
-
-   // -- Write to a file --
-   // fs.writeFileSync('notesAndTodos.json', JSON.stringify(obj, null, 2))
-
-   // -- Log it --
+   if (process.argv[2] === '-f') {
+      fs.writeFileSync('notesAndTodos.json', JSON.stringify(obj, null, 2))
+   }
    console.log(obj)
 })
