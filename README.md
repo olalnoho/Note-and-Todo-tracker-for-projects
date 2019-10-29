@@ -7,6 +7,8 @@ e.g.
 function test(){
   // @note
   // this is a note about the test function
+  // it can be multiple lines as well
+  // woho!
   const a = 1
 }
 
@@ -19,7 +21,7 @@ function add(x, y) {
 // @note
 // End of file
 </pre>
--- END OF FILE
+-- END OF FILE --
 
 would look like
 <pre>
@@ -34,9 +36,9 @@ would look like
   ],
   note: [
     {
-      msg: 'this is a note about the test function',
+      msg: 'this is a note about the test function it can be multiple lines as well woho!',
       startLineNum: 2,
-      endLineNum: 4,
+      endLineNum: 6,
       file: 'path to the file would go here'
     }, 
     {
