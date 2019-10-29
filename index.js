@@ -1,6 +1,6 @@
 // Reads the current dir through the cd command,
 // I don't know if cd on *nix or mac returns the current dir,
-// might not work there. Only tested on Windows.
+// so might not work there. Only tested on Windows.
 
 const fs = require('fs')
 const path = require('path')
@@ -13,7 +13,7 @@ const obj = {
 }
 
 const analyzeFile = file => {
-   
+
    let isActive = null;
    let kind = null
    let fullMsg = ''
@@ -42,7 +42,6 @@ const analyzeFile = file => {
             fullMsg += `${text} `
          }
       } else {
-
          if (kind && isActive) {
             endLineNum = lineNum
             obj[kind].push({ msg: fullMsg, startLineNum, endLineNum, file })
@@ -73,10 +72,13 @@ const goThroughProject = startingPoint => {
       files.forEach(file => {
          let fullPath = path.join(startingPoint, file)
          if (fs.lstatSync(fullPath).isDirectory()) {
-            if(file === 'node_modules') return
-            goThroughProject(fullPath)
+            if (file === 'node_modules' || file == '.git') return
+            return goThroughProject(fullPath)
          } else {
-            analyzeFile(fullPath)
+            // Only for js file.
+            if (file.split('.')[1] === 'js') {
+               return analyzeFile(fullPath)
+            }
          }
       })
    })
@@ -87,9 +89,12 @@ cp.exec('cd', (err, res) => {
    goThroughProject(res.trim())
 })
 
-process.on('exit', () => {
-   // @note
-   // Maybe write to file here with nice
-   // looking output or something
+process.on('beforeExit', () => {
+   // Here you can decide what to do with the data.
+
+   // -- Write to a file --
+   // fs.writeFileSync('notesAndTodos.json', JSON.stringify(obj, null, 2))
+
+   // -- Log it --
    console.log(obj)
 })
