@@ -13,8 +13,8 @@ function test(){
 }
 
 function add(x, y) {
-  // @todo
-  // maybe add support for callback?
+  // @todo maybe add support for callback?
+  // return cb(x,y) ???
   return x + y
 }
 
@@ -28,7 +28,7 @@ would look like
 {
   todos: [
     {
-      msg: 'maybe add support for callback?',
+      msg: 'maybe add support for callback? return cb(x,y) ???',
       startLineNum: 8,
       endLineNum: 10,
       file: 'path to the file would go here'
