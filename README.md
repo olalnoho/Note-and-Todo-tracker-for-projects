@@ -29,8 +29,8 @@ would look like
   todos: [
     {
       msg: 'maybe add support for callback? return cb(x,y) ???',
-      startLineNum: 8,
-      endLineNum: 10,
+      startLineNum: 10,
+      endLineNum: 12,
       file: 'path to the file would go here'
     }
   ],
@@ -43,8 +43,8 @@ would look like
     }, 
     {
       msg: 'End of file',
-      startLineNum: 13,
-      endLineNum: 15,
+      startLineNum: 15,
+      endLineNum: 17,
       file: 'path to the file would go here'
     }
   ]
