@@ -2,7 +2,6 @@
 Goes trough all dirs and files in current project, collects comments that start with @note or @todo and puts their contents into an object.
 
 e.g.
--- START OF FILE --
 <pre>
 function test(){
   // @note
@@ -21,7 +20,6 @@ function add(x, y) {
 // @note
 // End of file
 </pre>
--- END OF FILE --
 
 would look like
 <pre>
